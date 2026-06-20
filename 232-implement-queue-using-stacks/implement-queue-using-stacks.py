@@ -5,7 +5,6 @@ class MyQueue:
 
     def push(self, x: int) -> None:
         self.stk1.append(x)
-        return
 
     def pop(self) -> int:
         if not self.stk2:
