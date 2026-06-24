@@ -8,14 +8,14 @@ class Solution:
     def same(self, root, subroot):
         if root == None and subroot == None:
             return True
-        if root == None or subroot == None:
+        elif root == None or subroot == None:
             return False
-        if root.val != subroot.val:
+        elif root.val != subroot.val:
             return False
         return self.same(root.left, subroot.left) and self.same(root.right, subroot.right)
 
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if root == None and subRoot != None:
+        if root == None:
             return False
         if self.same(root, subRoot):
             return True
