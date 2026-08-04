@@ -1,16 +1,13 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        dct = {'(' : ')', '{' : '}', '[' : ']'}
         stk = []
-        for i in s:
-            if i in dct.keys():
-                stk.append(i)
+        dct = {'(' : ')', '[' : ']', '{' : '}'}
+        for b in s:
+            if b in dct.keys():
+                stk.append(b)
             else:
-                if not stk:
-                    return False
+                if stk and dct[stk[-1]] == b:
+                    stk.pop()
                 else:
-                    if dct[stk[-1]] == i:
-                        stk.pop()
-                    else:
-                        return False
-        return True if not stk else False
+                    return False
+        return False if stk else True
