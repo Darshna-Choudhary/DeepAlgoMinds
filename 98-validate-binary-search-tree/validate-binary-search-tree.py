@@ -7,11 +7,9 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         def check(root, st, end):
-            if root == None:
+            if root is None:
                 return True
-            if root.val < st or root.val > end:
+            if (root.val >= end) or (root.val <= st):
                 return False
-            a = check(root.left, st, root.val -1)
-            b = check(root.right, root.val+1, end)
-            return a and b
+            return check(root.left, st, root.val) and check(root.right, root.val, end)
         return check(root, float('-inf'), float('inf'))
